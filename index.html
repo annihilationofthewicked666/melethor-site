@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melethor - Black Folk Metal from the Apennines</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- Nuovi Font: Uncial Antiqua per i titoli (epico/runico), Cormorant Garamond per il corpo (elegante/leggibile) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+    :root {
+        /* Palette leggermente più luminosa */
+        --bg: #0a0a0a; /* Sfondo grigio scurissimo invece di nero puro */
+        --bg-secondary: #141414;
+        --text: #d1d1d1; /* Testo principale più chiaro */
+        --text-heading: #f0f0f0; /* Titoli quasi bianchi per massimo contrasto */
+        --muted: #888; /* Testo "muted" più leggibile */
+        --border: #222;
+        --accent: #a41d1d; 
+        --accent-glow: rgba(164, 29, 29, 0.5);
+        --glass: rgba(18, 18, 18, 0.6);
+        --font-heading: 'Uncial Antiqua', cursive;
+        --font-body: 'Cormorant Garamond', serif;
+    }
+
+    * {
+        box-sizing: border-box;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) var(--bg);
+    }
+    
+    html, body {
+        height: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--text);
+        background-color: var(--bg);
+        background-image: 
+            radial-gradient(ellipse at top, rgba(20,20,20,0.7) 0%, transparent 60%),
+            radial-gradient(ellipse at bottom, rgba(0,0,0,1) 0%, transparent 70%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+    
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+        opacity: 0.05;
+        z-index: -2;
+        animation: slowDrift 90s linear infinite;
+    }
+    
+    @keyframes slowDrift {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-2%, -2%); }
+        100% { transform: translate(0, 0); }
+    }
+
+    .preloader {
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: opacity 0.8s ease, visibility 0.8s;
+        opacity: 1;
+        visibility: visible;
+    }
+    .preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .preloader .logo {
+        width: 150px;
+        height: 150px;
+        animation: pulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.7; transform: scale(0.98); }
+        50% { opacity: 1; transform: scale(1); }
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 36px;
+    }
+    
+    .layout { display: flex; gap: 32px; }
+    .sidebar { width: 220px; position: sticky; top: 36px; align-self: start; }
+    .sidebar nav { display: flex; flex-direction: column; gap: 4px; border-left: 1px solid var(--border); }
+    
+    .sidebar .nav-link {
+        padding: 12px 18px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: all .25s ease;
+        position: relative;
+        font-size: 1.1em;
+        letter-spacing: 1px;
+    }
+    .sidebar .nav-link:hover {
+        color: var(--text-heading);
+        background: var(--glass);
+        transform: translateX(5px);
+    }
+    .sidebar .nav-link.active {
+        color: #fff;
+        text-shadow: 0 0 8px var(--accent-glow);
+    }
+    .sidebar .nav-link::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+    .sidebar .nav-link.active::before {
+        transform: scaleY(1);
+    }
+    
+    .content { flex: 1; min-width: 0; }
+    
+    .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+        text-align: center;
+        padding: 40px 0;
+    }
+    .brand .logo {
+        width: 140px;
+        height: 140px;
+        filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .8));
+        transition: transform 0.4s ease;
+    }
+    .brand .logo:hover {
+        transform: scale(1.05);
+    }
+
+    h1 {
+        font-family: var(--font-heading);
+        font-weight: 400;
+        font-size: 5rem;
+        margin: 12px 0 0;
+        color: var(--text-heading);
+        letter-spacing: 8px;
+        line-height: 1;
+        text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+    .subtitle {
+        font-family: var(--font-body);
+        color: var(--text);
+        letter-spacing: 3px;
+        margin-bottom: 24px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    
+    .section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: opacity, transform;
+        padding-top: 40px;
+        margin-bottom: 40px;
+    }
+    .section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin: 12px 0; }
+    .gallery-item {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .gallery-item:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, .8);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        /* Immagini più luminose e con un po' più di colore di default */
+        filter: saturate(0.5) brightness(0.8);
+        transition: all .5s ease;
+    }
+    .gallery-item:hover img {
+        filter: saturate(1) brightness(1);
+        transform: scale(1.05);
+    }
+    .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 12px;
+        text-align: center;
+        color: var(--text-heading);
+        font-size: 1.1em;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        transform: translateY(100%);
+        transition: transform 0.4s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+    }
+    
+    h2 {
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        font-size: 2.5rem;
+        position: relative;
+        padding-bottom: 15px;
+        margin: 20px 0 30px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        height: 2px;
+        width: 80px;
+        background: var(--accent);
+        border-radius: 2px;
+        transform-origin: center;
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1);
+        transform: scaleX(0) translateX(-50%);
+    }
+    .section.is-visible h2::after {
+        transform: scaleX(1) translateX(-50%);
+    }
+    
+    .news-item, td {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .news-date { color: var(--muted); font-size: 0.9em; margin-bottom: 8px; }
+    .news-title { color: var(--text-heading); font-weight: 600; font-size: 1.2em; }
+    p { line-height: 1.8; }
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: #fff; text-shadow: 0 0 5px var(--accent-glow); }
+    
+    table { width: 100%; border-collapse: collapse; }
+    .year { color: var(--muted); width: 100px; font-size: 1.2em; }
+    
+    .lyrics-selector select, .lyrics-text {
+        background: var(--bg-secondary);
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 12px;
+        border-radius: 4px;
+        width: 100%;
+    }
+    .lyrics-text { margin-top: 16px; line-height: 1.8; font-size: 1.1em; }
+    .hidden { display: none; }
+    
+    .footer {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 16px; margin-top: 60px; padding-top: 30px;
+        border-top: 1px solid var(--border);
+        color: var(--muted); font-size: 0.9em;
+    }
+    .social { display: flex; gap: 16px; }
+    .social a svg { width: 22px; height: 22px; color: var(--muted); transition: all .2s; }
+    .social a:hover svg { transform: translateY(-4px) scale(1.1); color: var(--accent); }
+    
+    @media (max-width: 900px) {
+        .layout { flex-direction: column; }
+        .sidebar { width: 100%; position: relative; top: auto; }
+        .sidebar nav { flex-direction: row; justify-content: center; border-left: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 700px) {
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2rem; }
+        .brand { min-height: 40vh; }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+    }
+</style>
+</head>
+<body>
+
+    <div class="preloader">
+        <svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><path d="M 50,2 L 98,50 L 50,98 L 2,50 Z" fill="none" stroke="var(--accent)" stroke-width="2"/><text x="50" y="62" text-anchor="middle" font-family="Uncial Antiqua, cursive" font-size="42" fill="var(--text-heading)">M</text></svg>
+    </div>
+
+    <div class="container">
+        <header class="brand">
+            <svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><path d="M 50,2 L 98,50 L 50,98 L 2,50 Z" fill="none" stroke="#222" stroke-width="1"/><text x="50" y="62" text-anchor="middle" font-family="Uncial Antiqua, cursive" font-size="42" fill="var(--text)">M</text></svg>
+            <h1>MELETHOR</h1>
+            <p class="subtitle">Black Folk Metal from the Apennines</p>
+        </header>
+
+        <div class="layout">
+            <aside class="sidebar" aria-label="Sidebar navigation">
+                <nav>
+                    <a class="nav-link active" data-target="home" href="#home">Home</a>
+                    <a class="nav-link" data-target="news" href="#news">News</a>
+                    <a class="nav-link" data-target="bio" href="#bio">Biography</a>
+                    <a class="nav-link" data-target="disco" href="#disco">Discography</a>
+                    <a class="nav-link" data-target="lyrics" href="#lyrics">Lyrics</a>
+                    <a class="nav-link" data-target="contact" href="#contact">Contact</a>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <main>
+                    <section id="home" class="section">
+                        <div class="gallery">
+                            <article class="gallery-item" tabindex="0"><img src="images/photo1.JPG" alt="Band photo"><div class="gallery-caption">Band Photo</div></article>
+                            <article class="gallery-item" tabindex="0"><img src="images/photo2.JPG" alt="Live 2024"><div class="gallery-caption">Live 2024</div></article>
+                            <article class="gallery-item" tabindex="0"><img src="images/photo3.jpg" alt="Recording session"><div class="gallery-caption">Recording Session</div></article>
+                        </div>
+                    </section>
+                    
+                    <section id="news" class="section">
+                        <h2>News & Updates</h2>
+                        <div class="news-item"><div class="news-date">15.01.2025</div><div class="news-title">New EP "Tales from the Apennines" Coming Soon</div><p>Our debut EP arrives early 2025: five tracks of raw black folk metal from the ancient mountains.</p></div>
+                        <div class="news-item"><div class="news-date">01.12.2024</div><div class="news-title">Melethor is Born</div><p>The project begins in Pistoia — channeling the Apennine spirit through distorted riffs and ancient melodies.</p></div>
+                    </section>
+                    
+                    <section id="bio" class="section">
+                        <h2>Biography</h2>
+                        <p>Melethor was formed in 2024 in Pistoia, Italy. The band merges black metal fury with ancient folk mysticism inspired by the Apennines.</p>
+                        <ul><li>Tomhawk – Bass / Guitars</li><li>Luχume – Lead Guitars</li></ul>
+                    </section>
+                    
+                    <section id="disco" class="section">
+                        <h2>Discography</h2>
+                        <table><tr><td class="year">2025</td><td><div class="title">Tales from the Apennines</div><div class="type">EP</div></td></tr></table>
+                    </section>
+
+                    <section id="lyrics" class="section">
+                        <h2>Lyrics</h2>
+                        <div class="lyrics-selector">
+                            <select id="song-select" onchange="showLyrics()"><option value="">-- Choose a song --</option><option value="beyond">Beyond Time and Space</option><option value="land">A Land to Conquer</option><option value="road">Long Ancient Road</option><option value="radices">Mihi Radices</option><option value="spirit">Spirit of the Lake</option></select>
+                        </div>
+                        <div id="lyrics-beyond" class="lyrics-text hidden"><h3>Beyond Time and Space</h3><p>Through ancient woods I wander...</p></div>
+                        <div id="lyrics-land" class="lyrics-text hidden"><h3>A Land to Conquer</h3><p>Mountains rise before us...</p></div>
+                    </section>
+
+                    <section id="contact" class="section">
+                        <h2>Contact</h2>
+                        <p><strong>Email:</strong> <a href="mailto:melethorband@gmail.com">melethorband@gmail.com</a></p>
+                        <p><strong>Bandcamp:</strong> <a href="https://melethor.bandcamp.com" target="_blank" rel="noopener">melethor.bandcamp.com</a></p>
+                    </section>
+                </main>
+
+                <footer class="footer">
+                    <div class="social" aria-label="Social links">
+                        <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.3c0-2.2 1.3-3.4 3.3-3.4.95 0 1.95.17 1.95.17v2.1h-1.07c-1.05 0-1.38.66-1.38 1.34v1.6h2.35l-.38 2.9h-1.97v7A10 10 0 0 0 22 12z"/></svg></a>
+                        <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://melethor.bandcamp.com" aria-label="Bandcamp" title="Bandcamp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 18h11.2V6H0v12zm12.8 0h11.2V6H12.8v12zM6.4 0L0 6h11.2L17.6 0H6.4z"/></svg></a>
+                    </div>
+                    <div>MELETHOR © 2025</div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- Preloader ---
+        const preloader = document.querySelector('.preloader');
+        window.addEventListener('load', () => {
+            preloader.classList.add('loaded');
+        });
+
+        // --- Animazione on-scroll con Intersection Observer ---
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Opzionale: smetti di osservare dopo l'animazione
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Gestione Navigazione Sidebar ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content .section');
+
+        function updateActiveLink() {
+            let currentSection = '';
+            contentSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-target') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Attiva all'inizio e durante lo scroll
+        updateActiveLink();
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Click per scrollare alla sezione
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Forza la visibilità della prima sezione al caricamento
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+           setTimeout(() => {
+             homeSection.classList.add('is-visible');
+           }, 200); // Leggero ritardo per farla apparire dopo il preloader
+        }
+
+    });
+
+    // --- Funzione per i Testi (invariata ma fuori dal DOMContentLoaded) ---
+    function showLyrics() {
+        document.querySelectorAll('.lyrics-text').forEach(l => l.classList.add('hidden'));
+        const val = document.getElementById('song-select').value;
+        if (val) {
+            const el = document.getElementById('lyrics-' + val);
+            if (el) el.classList.remove('hidden');
+        }
+    }
+    </script>
+</body>
+</html>
