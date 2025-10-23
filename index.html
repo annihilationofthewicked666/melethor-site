@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melethor - Black Folk Metal from the Apennines</title>
+    
+    <!-- ISTRUZIONE FAVICON: Assicurati di avere un file chiamato "favicon.png" nella stessa cartella di questo file HTML -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     
@@ -27,7 +29,6 @@
         }
 
         * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg); }
-        /* Aggiunto scroll-behavior: smooth all'HTML per migliorare lo scrolling in generale */
         html { scroll-behavior: smooth; }
         body { margin: 0; font-family: var(--font-body); color: var(--text); background-color: var(--bg); background-image: radial-gradient(ellipse at top, rgba(20,20,20,0.7) 0%, transparent 60%), radial-gradient(ellipse at bottom, rgba(0,0,0,1) 0%, transparent 70%); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
         body::before { content: ''; position: fixed; inset: 0; background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); opacity: 0.05; z-index: -2; animation: slowDrift 90s linear infinite; }
@@ -38,24 +39,14 @@
         .preloader .logo { width: 150px; height: 150px; animation: pulse 2.5s infinite ease-in-out; }
         @keyframes pulse { 0%, 100% { opacity: 0.7; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1); } }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 36px; }
-        .layout { display: flex; gap: 32px; }
-        .sidebar { width: 220px; position: sticky; top: 36px; align-self: start; }
-        .sidebar nav { display: flex; flex-direction: column; gap: 4px; border-left: 1px solid var(--border); }
-        .sidebar .nav-link { padding: 12px 18px; color: var(--muted); text-decoration: none; transition: all .25s ease; position: relative; font-size: 1.1em; letter-spacing: 1px; cursor: pointer; }
-        .sidebar .nav-link:hover { color: var(--text-heading); background: var(--glass); transform: translateX(5px); }
-        .sidebar .nav-link.active { color: #fff; text-shadow: 0 0 8px var(--accent-glow); }
-        .sidebar .nav-link::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: center; }
-        .sidebar .nav-link.active::before { transform: scaleY(1); }
-        .content { flex: 1; min-width: 0; }
-        
+        .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
         .brand { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 50vh; text-align: center; padding: 40px 0; }
         .brand .logo { width: 140px; height: 140px; filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .8)); transition: transform 0.4s ease; }
         .brand .logo:hover { transform: scale(1.05); }
-        h1 { font-family: var(--font-heading); font-weight: 400; font-size: 5rem; margin: 12px 0 0; color: var(--text-heading); letter-spacing: 8px; line-height: 1; text-shadow: 0 0 15px rgba(0,0,0,0.7); }
+        h1 { font-family: var(--font-heading); font-weight: 400; font-size: 4.5rem; margin: 12px 0 0; color: var(--text-heading); letter-spacing: 8px; line-height: 1; text-shadow: 0 0 15px rgba(0,0,0,0.7); }
         .subtitle { font-family: var(--font-body); color: var(--text); letter-spacing: 3px; margin-bottom: 24px; font-size: 1.1rem; font-weight: 600; }
         
-        .section { display: none; padding-top: 40px; margin-bottom: 40px; }
+        .section { display: none; padding-top: 20px; margin-bottom: 40px; }
         .section.active { display: block; animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -79,9 +70,6 @@
         .news-title { color: var(--text-heading); font-weight: 600; font-size: 1.2em; }
         table { width: 100%; border-collapse: collapse; }
         .year { color: var(--muted); width: 100px; font-size: 1.2em; }
-        .lyrics-selector select, .lyrics-text { background: var(--bg-secondary); color: var(--text); border: 1px solid var(--border); padding: 12px; border-radius: 4px; width: 100%; font-size: 1rem; }
-        .lyrics-text { margin-top: 16px; line-height: 1.8; font-size: 1.1em; }
-        .hidden { display: none; }
         
         .footer { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9em; }
         .social { display: flex; gap: 16px; }
@@ -95,8 +83,56 @@
         .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 45px; color: #fff; cursor: pointer; transition: transform 0.2s, color 0.2s; line-height: 1; }
         .lightbox-close:hover { color: var(--accent); transform: scale(1.1); }
 
-        @media (max-width: 900px) { .layout { flex-direction: column; } .sidebar { width: 100%; position: relative; top: auto; } .sidebar nav { flex-direction: row; justify-content: center; border-left: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); } }
-        @media (max-width: 700px) { h1 { font-size: 3rem; } h2 { font-size: 2rem; } .brand { min-height: 40vh; } }
+        /* --- NUOVA SEZIONE LYRICS --- */
+        .lyrics-container { display: flex; gap: 24px; border: 1px solid var(--border); background: var(--bg-secondary); padding: 18px; border-radius: 4px; }
+        .lyrics-nav { flex: 0 0 250px; display: flex; flex-direction: column; gap: 4px; }
+        .lyrics-nav a { padding: 10px 15px; border-radius: 4px; color: var(--muted); border: 1px solid transparent; transition: all 0.2s; }
+        .lyrics-nav a:hover { color: var(--text-heading); background: var(--glass); }
+        .lyrics-nav a.active { color: #fff; background: var(--accent); border-color: rgba(255,255,255,0.1); }
+        .lyrics-content { flex: 1; }
+        .lyrics-text { display: none; animation: fadeIn 0.5s; }
+        .lyrics-text.active { display: block; }
+        .lyrics-text h3 { font-family: var(--font-heading); color: var(--text-heading); margin-top: 0; }
+
+        /* --- STILI RESPONSIVE --- */
+        
+        /* Layout per Desktop (default) */
+        .layout { display: flex; gap: 32px; }
+        .sidebar { width: 220px; position: sticky; top: 36px; align-self: start; }
+        .sidebar nav { display: flex; flex-direction: column; gap: 4px; border-left: 1px solid var(--border); }
+        .sidebar .nav-link { padding: 12px 18px; color: var(--muted); text-decoration: none; transition: all .25s ease; position: relative; font-size: 1.1em; letter-spacing: 1px; cursor: pointer; }
+        .sidebar .nav-link:hover { color: var(--text-heading); background: var(--glass); transform: translateX(5px); }
+        .sidebar .nav-link.active { color: #fff; text-shadow: 0 0 8px var(--accent-glow); }
+        .sidebar .nav-link::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: center; }
+        .sidebar .nav-link.active::before { transform: scaleY(1); }
+        .content { flex: 1; min-width: 0; }
+
+        /* Tablet e Mobile (sotto 800px) */
+        @media (max-width: 800px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .brand { min-height: auto; padding: 20px 0; }
+            .container { padding: 16px; }
+            
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; top: auto; margin-bottom: 24px; }
+            .sidebar nav { 
+                flex-direction: row; 
+                justify-content: center; 
+                flex-wrap: wrap; /* Permette di andare a capo se non ci sta */
+                border-left: none; 
+                border-top: 1px solid var(--border); 
+                border-bottom: 1px solid var(--border);
+                padding: 8px 0;
+            }
+            .sidebar .nav-link { font-size: 1em; padding: 8px 12px; }
+            .sidebar .nav-link::before, .sidebar .nav-link:hover { transform: none; } /* Disattiva effetti desktop */
+            .sidebar .nav-link.active { background: var(--glass); }
+
+            .lyrics-container { flex-direction: column; }
+            .lyrics-nav { flex: 0 0 auto; }
+        }
+
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
     </style>
 </head>
@@ -138,7 +174,7 @@
                     
                     <section id="news" class="section">
                         <h2>News & Updates</h2>
-                        <div class="news-item"><div class="news-date">15.01.2025</div><div class="news-title">New EP "Tales from the Apennines" Coming Soon</div><p>Our debut EP arrives early 2025: five tracks of raw black folk metal from the ancient mountains.</p></div>
+                        <div class="news-item"><div class="news-date">15.12.2025</div><div class="news-title">New EP "Tales from the Apennines" Coming Soon</div><p>Our debut EP arrives early 2025: five tracks of raw black folk metal from the ancient mountains.</p></div>
                         <div class="news-item"><div class="news-date">05.10.2024</div><div class="news-title">Melethor is Born</div><p>The project begins in Pistoia — channeling the Apennine spirit through riffs and ancient melodies.</p></div>
                     </section>
                     
@@ -155,11 +191,37 @@
 
                     <section id="lyrics" class="section">
                         <h2>Lyrics</h2>
-                        <div class="lyrics-selector">
-                            <select id="song-select" onchange="showLyrics()"><option value="">-- Choose a song --</option><option value="beyond">Beyond Time and Space</option><option value="land">A Land to Conquer</option><option value="road">Long Ancient Road</option><option value="radices">Mihi Radices</option><option value="spirit">Spirit of the Lake</option></select>
+                        <div class="lyrics-container">
+                            <nav class="lyrics-nav">
+                                <a href="#" data-target="lyrics-beyond" class="active">Beyond Time and Space</a>
+                                <a href="#" data-target="lyrics-land">A Land to Conquer</a>
+                                <a href="#" data-target="lyrics-road">Long Ancient Road</a>
+                                <a href="#" data-target="lyrics-radices">Mihi Radices</a>
+                                <a href="#" data-target="lyrics-spirit">Spirit of the Lake</a>
+                            </nav>
+                            <div class="lyrics-content">
+                                <article id="lyrics-beyond" class="lyrics-text active">
+                                    <h3>Beyond Time and Space</h3>
+                                    <p>Qui puoi incollare il testo completo della canzone...<br>...riga dopo riga.</p>
+                                </article>
+                                <article id="lyrics-land" class="lyrics-text">
+                                    <h3>A Land to Conquer</h3>
+                                    <p>Testo della seconda canzone...</p>
+                                </article>
+                                <article id="lyrics-road" class="lyrics-text">
+                                    <h3>Long Ancient Road</h3>
+                                    <p>Testo della terza canzone...</p>
+                                </article>
+                                <article id="lyrics-radices" class="lyrics-text">
+                                    <h3>Mihi Radices</h3>
+                                    <p>Testo della quarta canzone...</p>
+                                </article>
+                                <article id="lyrics-spirit" class="lyrics-text">
+                                    <h3>Spirit of the Lake</h3>
+                                    <p>Testo della quinta canzone...</p>
+                                </article>
+                            </div>
                         </div>
-                        <div id="lyrics-beyond" class="lyrics-text hidden"><h3>Beyond Time and Space</h3><p>Through ancient woods I wander...</p></div>
-                        <div id="lyrics-land" class="lyrics-text hidden"><h3>A Land to Conquer</h3><p>Mountains rise before us...</p></div>
                     </section>
 
                     <section id="contact" class="section">
@@ -170,7 +232,7 @@
                 </main>
 
                 <footer class="footer">
-                    <div class="social" aria-label="Social links">
+                     <div class="social" aria-label="Social links">
                         <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.3c0-2.2 1.3-3.4 3.3-3.4.95 0 1.95.17 1.95.17v2.1h-1.07c-1.05 0-1.38.66-1.38 1.34v1.6h2.35l-.38 2.9h-1.97v7A10 10 0 0 0 22 12z"/></svg></a>
                         <a href="https://www.instagram.com/melethor_band" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
                         <a href="https://melethor.bandcamp.com" aria-label="Bandcamp" title="Bandcamp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 18h11.2V6H0v12zm12.8 0h11.2V6H12.8v12zM6.4 0L0 6h11.2L17.6 0H6.4z"/></svg></a>
@@ -194,35 +256,49 @@
             preloader.classList.add('loaded');
         });
         
-        const navLinks = document.querySelectorAll('.nav-link');
+        const mainNavLinks = document.querySelectorAll('.sidebar .nav-link');
         const contentSections = document.querySelectorAll('.content .section');
 
-        navLinks.forEach(link => {
+        mainNavLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                // Evita di rieseguire tutto se si clicca sul link già attivo
                 if (this.classList.contains('active')) return;
-
                 const targetId = this.getAttribute('data-target');
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
-                    // Aggiorna il link attivo nella sidebar
-                    navLinks.forEach(l => l.classList.remove('active'));
+                    mainNavLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Mostra la sezione corretta
                     contentSections.forEach(s => s.classList.remove('active'));
                     targetSection.classList.add('active');
-                    
-                    // --- ECCO LA CORREZIONE ---
-                    // Fa scorrere la pagina fluidamente fino all'inizio della nuova sezione
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
         
+        // --- NUOVA LOGICA PER LA SEZIONE LYRICS ---
+        const lyricsNavLinks = document.querySelectorAll('.lyrics-nav a');
+        const lyricsTexts = document.querySelectorAll('.lyrics-text');
+
+        lyricsNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                
+                lyricsNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                lyricsTexts.forEach(text => {
+                    if (text.id === targetId) {
+                        text.classList.add('active');
+                    } else {
+                        text.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Logica per la Lightbox (invariata)
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const galleryItems = document.querySelectorAll('.gallery-item');
@@ -230,29 +306,16 @@
 
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').src;
-                lightboxImg.src = imgSrc;
+                lightboxImg.src = item.querySelector('img').src;
                 lightbox.classList.add('active');
             });
         });
 
         const closeLightbox = () => lightbox.classList.remove('active');
         lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
     });
-
-    function showLyrics() {
-        document.querySelectorAll('.lyrics-text').forEach(l => l.classList.add('hidden'));
-        const val = document.getElementById('song-select').value;
-        if (val) {
-            document.getElementById('lyrics-' + val)?.classList.remove('hidden');
-        }
-    }
     </script>
 </body>
 </html>
