@@ -199,6 +199,24 @@
         }
 
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+        /* Ulteriori modifiche per schermi piccoli */
+        @media (max-width: 800px) {
+            .brand-content {
+                min-height: 30vh; /* Banner ancora più stretto per risparmiare spazio verticale */
+                padding: 24px 16px; /* Meno spazio bianco sopra e sotto il testo */
+            }
+
+            .brand .logo {
+                width: 100px; /* Logo più piccolo per non essere sproporzionato */
+                height: 100px;
+            }
+            
+            /* Sovrascrive la regola generale per h1 che avevi già nel tuo CSS, rendendolo più piccolo */
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 6px; /* Leggermente meno spazio tra le lettere */
+            }
+        }
     </style>
 </head>
 <body>
