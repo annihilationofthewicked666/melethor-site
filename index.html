@@ -217,6 +217,15 @@
                 letter-spacing: 6px; /* Leggermente meno spazio tra le lettere */
             }
         }
+
+        .main-logo {
+            max-width: 90%;
+            width: 450px; /* cambio se lo voglio più grande o più piccolo */
+            height: auto;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, .7));
+        }
+
     </style>
 </head>
 <body>
@@ -227,10 +236,9 @@
 
     <div class="container">
         <header class="brand">
-    <!-- Questo nuovo wrapper è fondamentale per posizionare il contenuto sopra lo sfondo -->
     <div class="brand-content">
-        <svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><path d="M 50,2 L 98,50 L 50,98 L 2,50 Z" fill="none" stroke="#222" stroke-width="1"/><text x="50" y="62" text-anchor="middle" font-family="Uncial Antiqua, cursive" font-size="42" fill="var(--text)">M</text></svg>
-        <h1>MELETHOR</h1>
+        <!-- ★ ISTRUZIONE: Assicurati di avere un file chiamato "logo-principale.png" nella stessa cartella -->
+        <img src="images/logo_m1.png" alt="Logo Melethor" class="main-logo">
         <p class="subtitle">Folk Black Metal from the Apennines</p>
     </div>
 </header>
