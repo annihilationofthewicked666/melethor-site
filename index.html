@@ -9,27 +9,46 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cormorant+Garamond:wght@400;600&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --text: #e0e0e0;
-            --text-muted: #aaa;
-            --accent: #9e2a2b; /* Rosso cupo elegante */
-            --border-glass: rgba(255, 255, 255, 0.15);
-            --bg-glass: rgba(0, 0, 0, 0.45); /* Il colore del "vetro" */
             --font-heading: 'Uncial Antiqua', cursive;
             --font-body: 'Cormorant Garamond', serif;
+
+            /* Tema "braci" di default: più caldo e leggibile */
+            --text: #f0e6d2;
+            --text-muted: #cbbfad;
+            --accent: #c84d4f;
+            --border-glass: rgba(255, 232, 214, 0.22);
+            --bg-glass: rgba(17, 10, 5, 0.6);
+            --backdrop-strength: 7px;
+            --grain-filter: grayscale(75%) brightness(1) saturate(1.05);
+            --scribble: rgba(200, 77, 79, 0.16);
+            --paper-edge: rgba(255, 232, 214, 0.08);
+        }
+
+        /* Tema alternativo più cupo "ombre" */
+        body.theme-shadows {
+            --text: #dedede;
+            --text-muted: #9a9a9a;
+            --accent: #9e2a2b;
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --bg-glass: rgba(0, 0, 0, 0.48);
+            --backdrop-strength: 8px;
+            --grain-filter: grayscale(100%) brightness(0.82);
+            --scribble: rgba(158, 42, 43, 0.18);
+            --paper-edge: rgba(255, 255, 255, 0.08);
         }
 
         * { box-sizing: border-box; }
         
-        body { 
-            margin: 0; 
-            font-family: var(--font-body); 
-            color: var(--text); 
-            background-color: #000;
-            
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: #0c0907;
+
             /* ★ QUI INSERISCI LA TUA IMMAGINE DI SFONDO GRANDE ★ */
             /* Se è nella cartella images, usa url('images/nomefile.jpg') */
             background-image: url("images/sfondosito_1.JPG");
@@ -43,6 +62,7 @@
             padding: 40px 20px;
             overflow-x: hidden;
             position: relative;
+            transition: color 0.4s ease, background 0.4s ease;
         }
 
             /* SFONDO + FILTRO + OVERLAY */
@@ -52,18 +72,34 @@
             inset: 0;
 
             /* IMMAGINE DI SFONDO IN BIANCO E NERO */
-            background-image: 
-
-                radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
+            background-image:
+                linear-gradient(180deg, rgba(19, 12, 7, 0.55) 0%, rgba(0, 0, 0, 0.75) 100%),
+                radial-gradient(circle at 20% 20%, rgba(200, 77, 79, 0.08), transparent 35%),
+                radial-gradient(circle at 80% 10%, rgba(255, 211, 168, 0.08), transparent 32%),
                 url("images/sfondosito_1.JPG");
 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
 
-            filter: grayscale(100%) brightness(0.8);
+            filter: var(--grain-filter);
             z-index: -1;
             pointer-events: none;
+        }
+
+        /* piccole pennellate colorate per un look meno "patinato" */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 12% 18%, var(--scribble), transparent 28%),
+                radial-gradient(circle at 78% 12%, rgba(255, 190, 152, 0.1), transparent 24%),
+                radial-gradient(circle at 16% 80%, rgba(255, 255, 255, 0.08), transparent 30%);
+            mix-blend-mode: screen;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: -1;
         }
 
 
@@ -77,16 +113,20 @@
         .main-wrapper {
             width: 100%;
             max-width: 680px;
-            
+
             /* Effetto Vetro (Glassmorphism) */
             background: var(--bg-glass);
-            backdrop-filter: blur(8px); /* Sfoca lo sfondo dietro al testo */
-            -webkit-backdrop-filter: blur(8px);
-            
+            backdrop-filter: blur(var(--backdrop-strength)); /* Sfoca lo sfondo dietro al testo */
+            -webkit-backdrop-filter: blur(var(--backdrop-strength));
+
             border: 1px solid var(--border-glass);
             border-radius: 2px;
             padding: 0;
-            
+
+            /* bordo irregolare per un effetto DIY */
+            outline: 2px solid var(--paper-edge);
+            outline-offset: 6px;
+
             /* Animazione entrata */
             animation: slideUpFade 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
@@ -100,9 +140,24 @@
         /* HEADER LOGO */
         .header {
             text-align: center;
-            padding: 10px 20px 20px;
+            padding: 10px 20px 25px;
             border-bottom: 1px solid var(--border-glass);
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+            position: relative;
+        }
+
+        .hand-note {
+            position: absolute;
+            left: 16px;
+            bottom: 4px;
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transform: rotate(-4deg);
+            background: rgba(0,0,0,0.3);
+            padding: 6px 10px;
+            border: 1px dashed var(--border-glass);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.35);
         }
 
         .main-logo {
@@ -114,14 +169,34 @@
         }
 
         .subtitle {
-            font-family: var(--font-body);
+            font-family: var(--font-heading);
             font-size: 1.1rem;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #fff;
+            color: #ffe8d6;
             margin-top: 15px;
             text-shadow: 0 2px 5px rgba(0,0,0,1);
         }
+
+        .mood-toggle {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 232, 214, 0.1);
+            border: 1px solid var(--border-glass);
+            color: var(--text);
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+            transform: rotate(-1.5deg);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.55);
+        }
+
+        .mood-toggle:hover { background: rgba(255, 232, 214, 0.16); color: #fff; }
 
         /* NAVIGAZIONE */
         .nav-bar {
@@ -134,7 +209,7 @@
         }
 
         .nav-link {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.07);
             border: 1px solid transparent;
             color: var(--text);
             font-family: var(--font-heading);
@@ -145,25 +220,44 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            transform: rotate(-1deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
+
+        .nav-link:nth-child(2n) { transform: rotate(1deg); }
 
         .nav-link:hover {
             background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-            color: #fff;
+            transform: translateY(-2px) rotate(-1deg);
+            color: #ffe8d6;
         }
+
+        .nav-link:nth-child(2n):hover { transform: translateY(-2px) rotate(1deg); }
 
         .nav-link.active {
             background: var(--accent);
             color: #fff;
             border-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 15px rgba(158, 42, 43, 0.5);
+            box-shadow: 0 12px 20px rgba(158, 42, 43, 0.45);
         }
 
         /* CONTENUTO */
         .content-area {
             padding: 40px 30px;
             min-height: 300px;
+            position: relative;
+        }
+
+        .content-area::before {
+            content: "appunti sparsi";
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            position: absolute;
+            top: 6px;
+            left: 20px;
+            opacity: 0.7;
         }
 
         .section { display: none; animation: fadeIn 0.8s ease; }
@@ -180,6 +274,19 @@
             text-shadow: 0 4px 10px rgba(0,0,0,1);
             border-bottom: 1px solid var(--border-glass);
             padding-bottom: 10px;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%) rotate(-1deg);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.4;
         }
 
         p, li { 
@@ -200,7 +307,7 @@
         .gallery-item:hover img { opacity: 1; }
 
         /* NEWS */
-        .news-item { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-glass); }
+        .news-item { text-align: center; margin-bottom: 30px; padding: 18px; border: 1px dashed var(--border-glass); background: rgba(0,0,0,0.35); box-shadow: 0 12px 30px rgba(0,0,0,0.45); transform: rotate(-0.5deg); }
         .news-item:last-child { border: none; }
         .news-date { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 5px; }
         .news-title { font-size: 1.4rem; color: #fff; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,1); }
@@ -248,6 +355,18 @@
             color: #888;
             border-top: 1px solid var(--border-glass);
             background: rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .footer::before {
+            content: "fatto a mano tra i boschi";
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transform: rotate(-3deg);
         }
         .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; }
         .social-links svg { width: 24px; height: 24px; fill: #ccc; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8)); transition: 0.3s; }
@@ -279,6 +398,8 @@
             <!-- LOGO -->
             <img src="images/melethor_m2.png" alt="Melethor" class="main-logo">
             <div class="subtitle">Folk Black Metal from the Apennines</div>
+            <button class="mood-toggle" type="button">Atmosfera: Braci</button>
+            <div class="hand-note">non troppo serio, ma sincero</div>
         </header>
 
         <!-- NAVIGAZIONE -->
@@ -403,6 +524,32 @@
     </div>
 
     <script>
+        // Tema
+        const bodyEl = document.body;
+        const moodToggle = document.querySelector('.mood-toggle');
+
+        const applyTheme = (theme) => {
+            const isShadows = theme === 'shadows';
+            bodyEl.classList.toggle('theme-shadows', isShadows);
+            moodToggle.textContent = isShadows ? 'Atmosfera: Ombre' : 'Atmosfera: Braci';
+            try {
+                localStorage.setItem('melethor-theme', theme);
+            } catch (_) {
+                /* Ignora salvataggio tema se non disponibile */
+            }
+        };
+
+        const savedTheme = (() => {
+            try { return localStorage.getItem('melethor-theme'); }
+            catch (_) { return null; }
+        })();
+        applyTheme(savedTheme === 'shadows' ? 'shadows' : 'embers');
+
+        moodToggle.addEventListener('click', () => {
+            const nextTheme = bodyEl.classList.contains('theme-shadows') ? 'embers' : 'shadows';
+            applyTheme(nextTheme);
+        });
+
         // Preloader
         window.addEventListener('load', () => {
             document.querySelector('.preloader').classList.add('loaded');
