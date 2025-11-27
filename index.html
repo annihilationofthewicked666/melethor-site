@@ -32,8 +32,7 @@
             
             /* ★ QUI INSERISCI LA TUA IMMAGINE DI SFONDO GRANDE ★ */
             /* Se è nella cartella images, usa url('images/nomefile.jpg') */
-            background-image: url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=2500&auto=format&fit=crop'); 
-            
+            background-image: url("images/sfondosito_1.JPG");
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* L'immagine sta ferma mentre scorri */
@@ -43,17 +42,30 @@
             align-items: center;
             padding: 40px 20px;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Overlay scuro per garantire che il testo si legga sopra l'immagine */
+            /* SFONDO + FILTRO + OVERLAY */
         body::before {
-            content: '';
+            content: "";
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+
+            /* IMMAGINE DI SFONDO IN BIANCO E NERO */
+            background-image: 
+
+                radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
+                url("images/sfondosito_1.JPG");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            filter: grayscale(100%) brightness(0.8);
             z-index: -1;
             pointer-events: none;
         }
+
 
         /* PRELOADER */
         .preloader { position: fixed; inset: 0; background: #050505; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1.2s ease, visibility 1.2s ease; }
@@ -88,7 +100,7 @@
         /* HEADER LOGO */
         .header {
             text-align: center;
-            padding: 50px 20px 30px;
+            padding: 10px 20px 20px;
             border-bottom: 1px solid var(--border-glass);
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
         }
@@ -100,7 +112,6 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.9));
             transition: transform 0.5s ease;
         }
-        .main-logo:hover { transform: scale(1.03); }
 
         .subtitle {
             font-family: var(--font-body);
@@ -285,7 +296,7 @@
             <!-- HOME -->
             <section id="home" class="section active">
                 <div class="gallery">
-                    <!-- Inserisci qui le foto piccole della band -->
+                    <!-- Foto piccole della band -->
                     <div class="gallery-item"><img src="images/photo2.JPG" alt="Band"></div>
                     <div class="gallery-item"><img src="images/photo3.JPG" alt="Luxume"></div>
                     <div class="gallery-item"><img src="images/photo4.JPG" alt="TomHawk"></div>
@@ -305,7 +316,7 @@
                     <p>The debut EP is approaching. Five hymns to the forgotten mountains.</p>
                 </div>
                 <div class="news-item">
-                    <div class="news-date">05.10.2024</div>
+                    <div class="news-date">05.09.2024</div>
                     <div class="news-title">The Circle Opens</div>
                     <p>Melethor has manifested in Pistoia.</p>
                 </div>
@@ -317,7 +328,7 @@
                 <p>Formed in the shadows of the Tuscan Apennines, Melethor weaves the raw aggression of black metal with the sorrowful melodies of local folklore.</p>
                 <br>
                 <div style="background: rgba(255,255,255,0.05); padding: 15px; border: 1px solid var(--border-glass);">
-                    <p><strong>Tomhawk</strong><br><span style="font-size: 0.9em; color: #aaa;">Bass / Vocals / Guitars</span></p>
+                    <p><strong>Tomhawk</strong><br><span style="font-size: 0.9em; color: #aaa;">Bass / Guitars</span></p>
                     <hr style="border-color: rgba(255,255,255,0.1); width: 50%;">
                     <p><strong>Luχume</strong><br><span style="font-size: 0.9em; color: #aaa;">Lead Guitars</span></p>
                 </div>
@@ -328,7 +339,7 @@
                 <h2>Discography</h2>
                 <div class="disco-box">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Tales from the Apennines</div>
-                    <div style="color: var(--accent); margin: 5px 0 15px;">Debut EP - Coming 2025</div>
+                    <div style="color: var(--accent); margin: 5px 0 15px;">Debut EP - Coming 2026</div>
                     <img src="images/cover_placeholder.jpg" alt="Album Art" style="width: 150px; border: 1px solid #444; display: block; margin: 0 auto 15px;">
                     <p><a href="https://melethor.bandcamp.com" target="_blank">Listen on Bandcamp</a></p>
                 </div>
@@ -367,7 +378,7 @@
                 </div>
             </section>
 
-            <!-- CONTACT -->
+            <!-- CONTATTI -->
             <section id="contact" class="section">
                 <h2>Contact</h2>
                 <p>For booking, trades and hate mail:</p>
