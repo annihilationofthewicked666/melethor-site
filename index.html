@@ -55,7 +55,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 60px 32px;
             overflow-x: hidden;
             position: relative;
             transition: color 0.4s ease, background 0.4s ease;
@@ -93,20 +93,21 @@
         /* CONTENITORE PRINCIPALE TRASPARENTE */
         .main-wrapper {
             width: 100%;
-            max-width: 680px;
-            
+            max-width: 1080px;
+
             /* Effetto Vetro (Glassmorphism) */
             background: var(--bg-glass);
             backdrop-filter: blur(var(--backdrop-strength)); /* Sfoca lo sfondo dietro al testo */
             -webkit-backdrop-filter: blur(var(--backdrop-strength));
-            
+
             border: 1px solid var(--border-glass);
-            border-radius: 2px;
+            border-radius: 10px;
             padding: 0;
-            
+
             /* Animazione entrata */
             animation: slideUpFade 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.9);
+            overflow: hidden;
         }
 
         @keyframes slideUpFade {
@@ -117,27 +118,27 @@
         /* HEADER LOGO */
         .header {
             text-align: center;
-            padding: 10px 20px 25px;
+            padding: 22px 32px 28px;
             border-bottom: 1px solid var(--border-glass);
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent);
             position: relative;
         }
 
         .main-logo {
             max-width: 100%;
-            width: 400px;
+            width: 460px;
             height: auto;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 5px 18px rgba(0,0,0,1));
             transition: transform 0.5s ease;
         }
 
         .subtitle {
             font-family: var(--font-body);
-            font-size: 1.1rem;
-            letter-spacing: 4px;
+            font-size: 1.05rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #ffe8d6;
-            margin-top: 15px;
+            margin-top: 14px;
             text-shadow: 0 2px 5px rgba(0,0,0,1);
         }
 
@@ -164,9 +165,10 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
-            padding: 20px;
+            gap: 12px;
+            padding: 22px 28px;
             border-bottom: 1px solid var(--border-glass);
+            background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
         }
 
         .nav-link {
@@ -174,12 +176,12 @@
             border: 1px solid transparent;
             color: var(--text);
             font-family: var(--font-heading);
-            padding: 10px 16px;
-            font-size: 1.1rem;
+            padding: 10px 18px;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
@@ -198,8 +200,16 @@
 
         /* CONTENUTO */
         .content-area {
-            padding: 40px 30px;
+            padding: 50px 60px;
             min-height: 300px;
+        }
+
+        .section-panel {
+            background: rgba(0,0,0,0.55);
+            border: 1px solid var(--border-glass);
+            padding: 28px 32px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.55);
+            margin-bottom: 32px;
         }
 
         .section { display: none; animation: fadeIn 0.8s ease; }
@@ -208,28 +218,36 @@
 
         h2 {
             font-family: var(--font-heading);
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             text-align: center;
             color: #fff;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             text-shadow: 0 4px 10px rgba(0,0,0,1);
             border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
         }
 
-        p, li { 
-            font-size: 1.2rem; 
-            line-height: 1.7; 
-            text-align: center; 
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
             text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* Ombra testo per leggere sullo sfondo */
         }
+
+        .lead { max-width: 780px; margin: 0 auto 20px; opacity: 0.95; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; align-items: start; }
+        .info-card { border: 1px solid var(--border-glass); padding: 18px; background: rgba(255,255,255,0.03); }
+        .info-card strong { display: block; font-size: 1.3rem; }
+        .info-card span { color: var(--text-muted); letter-spacing: 1px; }
 
         a { color: #fff; text-decoration: none; border-bottom: 1px dotted var(--accent); transition: 0.3s; }
         a:hover { color: var(--accent); border-bottom-style: solid; text-shadow: 0 0 10px var(--accent); }
 
         /* GALLERY */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
         .gallery-item { border: 1px solid var(--border-glass); overflow: hidden; aspect-ratio: 1; cursor: pointer; transition: 0.3s; background: rgba(0,0,0,0.5); }
         .gallery-item:hover { transform: scale(1.05); border-color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
@@ -332,94 +350,116 @@
             
             <!-- HOME -->
             <section id="home" class="section active">
-                <div class="gallery">
-                    <!-- Foto piccole della band -->
-                    <div class="gallery-item"><img src="images/photo2.JPG" alt="Band"></div>
-                    <div class="gallery-item"><img src="images/photo3.JPG" alt="Luxume"></div>
-                    <div class="gallery-item"><img src="images/photo4.JPG" alt="TomHawk"></div>
+                <div class="section-panel">
+                    <div class="gallery">
+                        <!-- Foto piccole della band -->
+                        <div class="gallery-item"><img src="images/photo2.JPG" alt="Band"></div>
+                        <div class="gallery-item"><img src="images/photo3.JPG" alt="Luxume"></div>
+                        <div class="gallery-item"><img src="images/photo4.JPG" alt="TomHawk"></div>
+                    </div>
+                    <br>
+                    <p class="lead">
+                        L'eco dei boschi antichi risuona nei nostri riff: Melethor fonde black metal e folklore appenninico in rituali che profumano di resina, bruma e fuoco.
+                    </p>
+                    <p style="font-style: italic; opacity: 0.9; margin-top: 8px;">
+                        "Echoes from the ancient woods, where the spirits still dwell."
+                    </p>
                 </div>
-                <br>
-                <p style="font-style: italic; opacity: 0.9;">
-                    "Echoes from the ancient woods, where the spirits still dwell."
-                </p>
             </section>
 
             <!-- NEWS -->
             <section id="news" class="section">
-                <h2>Transmissions</h2>
-                <div class="news-item">
-                    <div class="news-date">15.12.2025</div>
-                    <div class="news-title">Tales from the Apennines</div>
-                    <p>The debut EP is approaching. Five hymns to the forgotten mountains.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">05.09.2024</div>
-                    <div class="news-title">The Circle Opens</div>
-                    <p>Melethor has manifested in Pistoia.</p>
+                <div class="section-panel">
+                    <h2>Transmissions</h2>
+                    <div class="news-item">
+                        <div class="news-date">15.12.2025</div>
+                        <div class="news-title">Tales from the Apennines</div>
+                        <p>The debut EP is approaching. Five hymns to the forgotten mountains.</p>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">05.09.2024</div>
+                        <div class="news-title">The Circle Opens</div>
+                        <p>Melethor has manifested in Pistoia.</p>
+                    </div>
                 </div>
             </section>
 
             <!-- BIO -->
             <section id="bio" class="section">
-                <h2>The Coven</h2>
-                <p>Formed in the shadows of the Tuscan Apennines, Melethor weaves the raw aggression of black metal with the sorrowful melodies of local folklore.</p>
-                <br>
-                <div style="background: rgba(255,255,255,0.05); padding: 15px; border: 1px solid var(--border-glass);">
-                    <p><strong>Tomhawk</strong><br><span style="font-size: 0.9em; color: #aaa;">Bass / Guitars</span></p>
-                    <hr style="border-color: rgba(255,255,255,0.1); width: 50%;">
-                    <p><strong>Luχume</strong><br><span style="font-size: 0.9em; color: #aaa;">Lead Guitars</span></p>
+                <div class="section-panel">
+                    <h2>The Coven</h2>
+                    <p class="lead">Formed in the shadows of the Tuscan Apennines, Melethor weaves the raw aggression of black metal with the sorrowful melodies of local folklore.</p>
+                    <br>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <strong>Tomhawk</strong>
+                            <span>Bass / Guitars</span>
+                            <p style="font-size: 1rem; line-height: 1.6; margin-top: 12px;">Low-end strategist crafting riffs that mirror the mountain's rumble.</p>
+                        </div>
+                        <div class="info-card">
+                            <strong>Luχume</strong>
+                            <span>Lead Guitars</span>
+                            <p style="font-size: 1rem; line-height: 1.6; margin-top: 12px;">Melodic architect channeling ancestral chants into soaring leads.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- MUSIC -->
             <section id="disco" class="section">
-                <h2>Discography</h2>
-                <div class="disco-box">
-                    <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Tales from the Apennines</div>
-                    <div style="color: var(--accent); margin: 5px 0 15px;">Debut EP - Coming 2026</div>
-                    <img src="images/cover_placeholder.jpg" alt="Album Art" style="width: 150px; border: 1px solid #444; display: block; margin: 0 auto 15px;">
-                    <p><a href="https://melethor.bandcamp.com" target="_blank">Listen on Bandcamp</a></p>
+                <div class="section-panel">
+                    <h2>Discography</h2>
+                    <div class="disco-box">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Tales from the Apennines</div>
+                        <div style="color: var(--accent); margin: 5px 0 15px;">Debut EP - Coming 2026</div>
+                        <img src="images/cover_placeholder.jpg" alt="Album Art" style="width: 150px; border: 1px solid #444; display: block; margin: 0 auto 15px;">
+                        <p><a href="https://melethor.bandcamp.com" target="_blank">Listen on Bandcamp</a></p>
+                    </div>
                 </div>
             </section>
 
             <!-- LYRICS -->
             <section id="lyrics" class="section">
-                <h2>Lyrics</h2>
-                <div class="song-list">
-                    <button class="song-btn active" data-song="l-beyond">Beyond Time and Space</button>
-                    <button class="song-btn" data-song="l-land">A Land to Conquer</button>
-                    <button class="song-btn" data-song="l-road">Long Ancient Road</button>
-                    <button class="song-btn" data-song="l-spirit">Spirit of the Lake</button>
-                </div>
+                <div class="section-panel">
+                    <h2>Lyrics</h2>
+                    <div class="song-list">
+                        <button class="song-btn active" data-song="l-beyond">Beyond Time and Space</button>
+                        <button class="song-btn" data-song="l-land">A Land to Conquer</button>
+                        <button class="song-btn" data-song="l-road">Long Ancient Road</button>
+                        <button class="song-btn" data-song="l-spirit">Spirit of the Lake</button>
+                    </div>
 
-                <div id="l-beyond" class="lyrics-text active">
-                    <h3>Beyond Time and Space</h3>
-                    <p>[Instrumental]</p>
-                </div>
-                <div id="l-land" class="lyrics-text">
-                    <h3>A Land to Conquer</h3>
-                    <p>They Say they will survive
-                    The wrath of a man unleashed
-                    Despite the cold frost
-                    An evil war began...</p>
-                </div>
-                <div id="l-road" class="lyrics-text">
-                    <h3>Long Ancient Road</h3>
-                    <p>A long, ancient road
-                    towards an old, ruin castle...</p>
-                </div>
-                <div id="l-spirit" class="lyrics-text">
-                    <h3>Spirit of the Lake</h3>
-                    <p>Embrace the storm, holy lake
-                    Thus powerful, is the rain!...</p>
+                    <div id="l-beyond" class="lyrics-text active">
+                        <h3>Beyond Time and Space</h3>
+                        <p>[Instrumental]</p>
+                    </div>
+                    <div id="l-land" class="lyrics-text">
+                        <h3>A Land to Conquer</h3>
+                        <p>They Say they will survive
+                        The wrath of a man unleashed
+                        Despite the cold frost
+                        An evil war began...</p>
+                    </div>
+                    <div id="l-road" class="lyrics-text">
+                        <h3>Long Ancient Road</h3>
+                        <p>A long, ancient road
+                        towards an old, ruin castle...</p>
+                    </div>
+                    <div id="l-spirit" class="lyrics-text">
+                        <h3>Spirit of the Lake</h3>
+                        <p>Embrace the storm, holy lake
+                        Thus powerful, is the rain!...</p>
+                    </div>
                 </div>
             </section>
 
             <!-- CONTATTI -->
             <section id="contact" class="section">
-                <h2>Contact</h2>
-                <p>For booking, trades and hate mail:</p>
-                <p><a href="mailto:melethorband@gmail.com" style="font-size: 1.3rem;">melethorband@gmail.com</a></p>
+                <div class="section-panel">
+                    <h2>Contact</h2>
+                    <p>For booking, trades and hate mail:</p>
+                    <p><a href="mailto:melethorband@gmail.com" style="font-size: 1.3rem;">melethorband@gmail.com</a></p>
+                </div>
             </section>
 
         </div>
