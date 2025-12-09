@@ -20,6 +20,8 @@
             --line: rgba(255, 255, 255, 0.12);
         }
 
+        html { scroll-behavior: smooth; }
+
         * { box-sizing: border-box; }
 
         body {
@@ -196,21 +198,19 @@
 
         .music {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: minmax(260px, 1fr) 1.2fr;
             gap: 18px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .cover {
             width: 100%;
-            max-width: 340px;
-            aspect-ratio: 1 / 1;
+            height: 100%;
             border: 1px solid var(--line);
             display: block;
             background: #111;
             object-fit: cover;
             object-position: center;
-            margin: 0 auto;
         }
 
         .tracklist {
@@ -345,17 +345,18 @@
         <section id="music">
             <h2>Music</h2>
             <div class="music">
-                <img src="images/photo1.JPG" alt="Tales from the Apennines cover" class="cover">
+                <img src="images/COPERTINA_definitiva.png" alt="Tales from the Apennines cover" class="cover">
                 <div>
                     <p style="text-transform: uppercase; letter-spacing: 0.18em;">Long Ancient Road — singolo</p>
                     <p>Uscita: venerdì 12 dicembre.</p>
                     <div class="line"></div>
                     <p style="text-transform: uppercase; letter-spacing: 0.18em;">Tales from the Apennines — EP</p>
-                    <p>Uscita completa: 2 gennaio 2026 (include Long Ancient Road).</p>
+                    <p>Uscita completa: 2 gennaio 2026.</p>
                     <ul class="tracklist">
                         <li>Beyond Time and Space</li>
                         <li>A Land to Conquer</li>
                         <li>Long Ancient Road</li>
+                        <li>Mihi Radices</li>
                         <li>Spirit of the Lake</li>
                     </ul>
                     <div class="streaming">
@@ -407,7 +408,7 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>Booking, trades, hate mail:</p>
+            <p> For Booking, trades, mail:</p>
             <p><a href="mailto:melethorband@gmail.com">melethorband@gmail.com</a></p>
             <div class="social">
                 <a href="https://www.instagram.com/melethor_band" target="_blank" rel="noreferrer">Instagram</a>
