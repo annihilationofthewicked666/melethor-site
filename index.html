@@ -30,6 +30,16 @@
             line-height: 1.7;
             letter-spacing: 0.02em;
             min-height: 100vh;
+<<<<<<< HEAD
+=======
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 32px;
+            overflow-x: hidden;
+            position: relative;
+            transition: color 0.4s ease, background 0.4s ease;
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         body::before {
@@ -43,16 +53,45 @@
             z-index: -1;
         }
 
+<<<<<<< HEAD
         main {
             max-width: 1100px;
             margin: 40px auto 80px;
             padding: 32px 28px 42px;
             background: var(--panel);
             border: 1px solid var(--line);
+=======
+
+        /* PRELOADER */
+        .preloader { position: fixed; inset: 0; background: #050505; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1.2s ease, visibility 1.2s ease; }
+        .preloader.loaded { opacity: 0; visibility: hidden; }
+        .preloader svg { width: 120px; animation: pulse 2.5s infinite ease-in-out; filter: drop-shadow(0 0 15px var(--accent)); }
+        @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
+
+        /* CONTENITORE PRINCIPALE TRASPARENTE */
+        .main-wrapper {
+            width: 100%;
+            max-width: 1080px;
+
+            /* Effetto Vetro (Glassmorphism) */
+            background: var(--bg-glass);
+            backdrop-filter: blur(var(--backdrop-strength)); /* Sfoca lo sfondo dietro al testo */
+            -webkit-backdrop-filter: blur(var(--backdrop-strength));
+
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 0;
+
+            /* Animazione entrata */
+            animation: slideUpFade 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.9);
+            overflow: hidden;
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         header {
             text-align: center;
+<<<<<<< HEAD
             padding-bottom: 28px;
             border-bottom: 1px solid var(--line);
         }
@@ -76,6 +115,30 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.36em;
+=======
+            padding: 22px 32px 28px;
+            border-bottom: 1px solid var(--border-glass);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent);
+            position: relative;
+        }
+
+        .main-logo {
+            max-width: 100%;
+            width: 460px;
+            height: auto;
+            filter: drop-shadow(0 5px 18px rgba(0,0,0,1));
+            transition: transform 0.5s ease;
+        }
+
+        .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #ffe8d6;
+            margin-top: 14px;
+            text-shadow: 0 2px 5px rgba(0,0,0,1);
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         nav {
@@ -90,12 +153,20 @@
             padding: 12px 0;
             display: flex;
             flex-wrap: wrap;
+<<<<<<< HEAD
             justify-content: center;
             gap: 14px;
+=======
+            gap: 12px;
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border-glass);
+            background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         nav a {
             color: var(--text);
+<<<<<<< HEAD
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.26em;
@@ -103,6 +174,16 @@
             padding: 8px 10px;
             border: 1px solid transparent;
             transition: color 0.2s ease, border-color 0.2s ease;
+=======
+            font-family: var(--font-heading);
+            padding: 10px 18px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         nav a:hover,
@@ -117,6 +198,7 @@
             border-bottom: 1px solid var(--line);
         }
 
+<<<<<<< HEAD
         h2 {
             font-family: 'IM Fell English SC', serif;
             font-size: 1.8rem;
@@ -162,6 +244,76 @@
             object-fit: cover;
             display: block;
             border: 1px solid var(--line);
+=======
+        /* CONTENUTO */
+        .content-area {
+            padding: 50px 60px;
+            min-height: 300px;
+        }
+
+        .section-panel {
+            background: rgba(0,0,0,0.55);
+            border: 1px solid var(--border-glass);
+            padding: 28px 32px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.55);
+            margin-bottom: 32px;
+        }
+
+        .section { display: none; animation: fadeIn 0.8s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; filter: blur(5px); } to { opacity: 1; filter: blur(0); } }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 32px;
+            text-shadow: 0 4px 10px rgba(0,0,0,1);
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* Ombra testo per leggere sullo sfondo */
+        }
+
+        .lead { max-width: 780px; margin: 0 auto 20px; opacity: 0.95; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; align-items: start; }
+        .info-card { border: 1px solid var(--border-glass); padding: 18px; background: rgba(255,255,255,0.03); }
+        .info-card strong { display: block; font-size: 1.3rem; }
+        .info-card span { color: var(--text-muted); letter-spacing: 1px; }
+
+        a { color: #fff; text-decoration: none; border-bottom: 1px dotted var(--accent); transition: 0.3s; }
+        a:hover { color: var(--accent); border-bottom-style: solid; text-shadow: 0 0 10px var(--accent); }
+
+        /* GALLERY */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+        .gallery-item { border: 1px solid var(--border-glass); overflow: hidden; aspect-ratio: 1; cursor: pointer; transition: 0.3s; background: rgba(0,0,0,0.5); }
+        .gallery-item:hover { transform: scale(1.05); border-color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .gallery-item:hover img { opacity: 1; }
+
+        /* NEWS */
+        .news-item { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-glass); }
+        .news-item:last-child { border: none; }
+        .news-date { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 5px; }
+        .news-title { font-size: 1.4rem; color: #fff; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,1); }
+
+        /* LYRICS & DISCO */
+        .disco-box {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-glass);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
         }
 
         .news-item {
@@ -305,6 +457,7 @@
             </ul>
         </nav>
 
+<<<<<<< HEAD
         <section id="home">
             <h2>Black Metal From The Hills</h2>
             <div class="line"></div>
@@ -313,6 +466,130 @@
                 <img src="images/photo2.JPG" alt="Melethor - band">
                 <img src="images/photo3.JPG" alt="Melethor - stage">
                 <img src="images/photo4.JPG" alt="Melethor - portrait">
+=======
+        <div class="content-area">
+            
+            <!-- HOME -->
+            <section id="home" class="section active">
+                <div class="section-panel">
+                    <div class="gallery">
+                        <!-- Foto piccole della band -->
+                        <div class="gallery-item"><img src="images/photo2.JPG" alt="Band"></div>
+                        <div class="gallery-item"><img src="images/photo3.JPG" alt="Luxume"></div>
+                        <div class="gallery-item"><img src="images/photo4.JPG" alt="TomHawk"></div>
+                    </div>
+                    <br>
+                    <p class="lead">
+                        L'eco dei boschi antichi risuona nei nostri riff: Melethor fonde black metal e folklore appenninico in rituali che profumano di resina, bruma e fuoco.
+                    </p>
+                    <p style="font-style: italic; opacity: 0.9; margin-top: 8px;">
+                        "Echoes from the ancient woods, where the spirits still dwell."
+                    </p>
+                </div>
+            </section>
+
+            <!-- NEWS -->
+            <section id="news" class="section">
+                <div class="section-panel">
+                    <h2>Transmissions</h2>
+                    <div class="news-item">
+                        <div class="news-date">15.12.2025</div>
+                        <div class="news-title">Tales from the Apennines</div>
+                        <p>The debut EP is approaching. Five hymns to the forgotten mountains.</p>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">05.09.2024</div>
+                        <div class="news-title">The Circle Opens</div>
+                        <p>Melethor has manifested in Pistoia.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BIO -->
+            <section id="bio" class="section">
+                <div class="section-panel">
+                    <h2>The Coven</h2>
+                    <p class="lead">Formed in the shadows of the Tuscan Apennines, Melethor weaves the raw aggression of black metal with the sorrowful melodies of local folklore.</p>
+                    <br>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <strong>Tomhawk</strong>
+                            <span>Bass / Guitars</span>
+                            <p style="font-size: 1rem; line-height: 1.6; margin-top: 12px;">Low-end strategist crafting riffs that mirror the mountain's rumble.</p>
+                        </div>
+                        <div class="info-card">
+                            <strong>Luχume</strong>
+                            <span>Lead Guitars</span>
+                            <p style="font-size: 1rem; line-height: 1.6; margin-top: 12px;">Melodic architect channeling ancestral chants into soaring leads.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MUSIC -->
+            <section id="disco" class="section">
+                <div class="section-panel">
+                    <h2>Discography</h2>
+                    <div class="disco-box">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Tales from the Apennines</div>
+                        <div style="color: var(--accent); margin: 5px 0 15px;">Debut EP - Coming 2026</div>
+                        <img src="images/cover_placeholder.jpg" alt="Album Art" style="width: 150px; border: 1px solid #444; display: block; margin: 0 auto 15px;">
+                        <p><a href="https://melethor.bandcamp.com" target="_blank">Listen on Bandcamp</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LYRICS -->
+            <section id="lyrics" class="section">
+                <div class="section-panel">
+                    <h2>Lyrics</h2>
+                    <div class="song-list">
+                        <button class="song-btn active" data-song="l-beyond">Beyond Time and Space</button>
+                        <button class="song-btn" data-song="l-land">A Land to Conquer</button>
+                        <button class="song-btn" data-song="l-road">Long Ancient Road</button>
+                        <button class="song-btn" data-song="l-spirit">Spirit of the Lake</button>
+                    </div>
+
+                    <div id="l-beyond" class="lyrics-text active">
+                        <h3>Beyond Time and Space</h3>
+                        <p>[Instrumental]</p>
+                    </div>
+                    <div id="l-land" class="lyrics-text">
+                        <h3>A Land to Conquer</h3>
+                        <p>They Say they will survive
+                        The wrath of a man unleashed
+                        Despite the cold frost
+                        An evil war began...</p>
+                    </div>
+                    <div id="l-road" class="lyrics-text">
+                        <h3>Long Ancient Road</h3>
+                        <p>A long, ancient road
+                        towards an old, ruin castle...</p>
+                    </div>
+                    <div id="l-spirit" class="lyrics-text">
+                        <h3>Spirit of the Lake</h3>
+                        <p>Embrace the storm, holy lake
+                        Thus powerful, is the rain!...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTATTI -->
+            <section id="contact" class="section">
+                <div class="section-panel">
+                    <h2>Contact</h2>
+                    <p>For booking, trades and hate mail:</p>
+                    <p><a href="mailto:melethorband@gmail.com" style="font-size: 1.3rem;">melethorband@gmail.com</a></p>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://www.instagram.com/melethor_band" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.69-4.92-4.92-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85C2.38 3.85 3.9 2.3 7.15 2.16 8.42 2.1 8.8 2.09 12 2.09M12 0C8.74 0 8.33.01 7.05.07 2.75.27.34 2.68.14 6.98.08 8.26.07 8.67.07 11.93c0 3.26.01 3.67.07 4.95.2 4.3 2.61 6.71 6.91 6.91 1.28.06 1.69.07 4.95.07 3.26 0 3.67-.01 4.95-.07 4.3-.2 6.71-2.61 6.91-6.91.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.3-2.61-6.71-6.91-6.91C15.67.01 15.26 0 12 0z"/><path d="M12 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16-2.76-6.16-6.16-6.16zm0 10.16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="18.41" cy="5.63" r="1.44"/></svg></a>
+                <a href="https://melethor.bandcamp.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M0 18h11.2V6H0v12zm12.8 0h11.2V6H12.8v12zM6.4 0L0 6h11.2L17.6 0H6.4z"/></svg></a>
+>>>>>>> b35c5cc1752dbce50c273403dc172861e00a3dc6
             </div>
             <p class="home-quote">“Echoes from the ancient woods, where the spirits still dwell.”</p>
         </section>
