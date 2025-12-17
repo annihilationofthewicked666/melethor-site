@@ -337,18 +337,79 @@
             color: var(--accent);
         }
 
+        @media (max-width: 900px) {
+            main {
+                margin: 16px 14px 40px;
+                padding: 22px 18px 32px;
+            }
+
+            .music {
+                grid-template-columns: 1fr;
+            }
+
+            .cover {
+                max-height: 320px;
+                object-fit: cover;
+            }
+        }
+
         @media (max-width: 640px) {
             main {
                 margin: 0;
                 border: none;
+                padding: 18px 14px 28px;
+            }
+
+            header {
+                padding-bottom: 20px;
+            }
+
+            nav {
+                border-top: none;
+                border-bottom: 1px solid var(--line);
+                margin: 18px -4px 6px;
+                overflow-x: auto;
+            }
+
+            nav ul {
+                justify-content: flex-start;
+                padding: 10px 4px;
+                gap: 10px;
             }
 
             nav a {
-                letter-spacing: 0.18em;
+                display: inline-block;
+                letter-spacing: 0.12em;
+                font-size: 0.9rem;
+                padding: 10px 12px;
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 2px;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.9rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            section {
+                padding: 24px 0;
+            }
+
+            .music-toggle button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
