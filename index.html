@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,27 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cormorant+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cormorant+Garamond:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
             --bg: #040404;
-            --panel: rgba(0, 0, 0, 0.72);
+            --panel: rgba(0, 0, 0, 0.64);
             --text: #e8e8e8;
             --muted: #9c9c9c;
             --accent: #b71219;
             --line: rgba(255, 255, 255, 0.12);
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -38,10 +45,10 @@
             content: "";
             position: fixed;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(0,0,0,0.92)),
-                        url("images/sfondosito_1.JPG") center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)),
+                url("images/sfondosito_1.JPG") center/cover no-repeat;
             filter: grayscale(100%) contrast(1.1);
-            opacity: 0.35;
+            opacity: 0.5;
             z-index: -1;
         }
 
@@ -63,7 +70,7 @@
             width: 360px;
             max-width: 90%;
             height: auto;
-            filter: drop-shadow(0 0 18px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.9));
         }
 
         h1 {
@@ -132,8 +139,13 @@
             font-size: 1.1rem;
         }
 
-        a { color: var(--accent); }
-        a:hover { color: #da1e29; }
+        a {
+            color: var(--accent);
+        }
+
+        a:hover {
+            color: #da1e29;
+        }
 
         .line {
             height: 1px;
@@ -168,7 +180,9 @@
             border-top: 1px solid var(--line);
         }
 
-        .news-item:first-of-type { border-top: none; }
+        .news-item:first-of-type {
+            border-top: none;
+        }
 
         .news-date {
             color: var(--muted);
@@ -230,7 +244,9 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
-        details + details { margin-top: 10px; }
+        details+details {
+            margin-top: 10px;
+        }
 
         summary {
             cursor: pointer;
@@ -256,8 +272,47 @@
             letter-spacing: 0.06em;
         }
 
-        .streaming a:hover { color: var(--accent); }
-        .streaming svg { width: 22px; height: 22px; fill: currentColor; }
+        .streaming a:hover {
+            color: var(--accent);
+        }
+
+        .streaming svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .music-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .music-toggle button {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            border: 1px solid var(--line);
+            padding: 8px 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            cursor: pointer;
+            transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+        }
+
+        .music-toggle button.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(183, 18, 25, 0.08);
+        }
+
+        .release-panel {
+            display: none;
+        }
+
+        .release-panel.active {
+            display: block;
+        }
 
         footer {
             text-align: center;
@@ -273,16 +328,32 @@
             margin-bottom: 10px;
         }
 
-        .social a { color: var(--text); text-decoration: none; }
-        .social a:hover { color: var(--accent); }
+        .social a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+        }
 
         @media (max-width: 640px) {
-            main { margin: 0; border: none; }
-            nav a { letter-spacing: 0.18em; }
-            h1 { font-size: 2rem; }
+            main {
+                margin: 0;
+                border: none;
+            }
+
+            nav a {
+                letter-spacing: 0.18em;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <main>
         <header>
@@ -304,7 +375,8 @@
         <section id="home">
             <h2>Black Metal From The Hills</h2>
             <div class="line"></div>
-            <p>Forged in the Tuscan Apennines, Melethor blends raw riffs and folk echoes. No frills—just cold guitars, pounding drums, and stories of forgotten woods.</p>
+            <p>Forged in the Tuscan Apennines, Melethor blends raw riffs and folk echoes. No frills—just cold guitars,
+                pounding drums, and stories of forgotten woods.</p>
             <div class="gallery">
                 <img src="images/photo2.JPG" alt="Melethor - band">
                 <img src="images/photo3.JPG" alt="Melethor - stage">
@@ -318,7 +390,9 @@
             <div class="news-item">
                 <div class="news-date">01.12.2025</div>
                 <div class="news-title">Pre-save “Long Ancient Road”</div>
-                <p>Pre-salva il singolo su Spotify e le altre piattaforme: <a href="https://presave.link/long-ancient-road" target="_blank" rel="noreferrer">pre-save ora</a>.</p>
+                <p>Pre-salva il singolo su Spotify e le altre piattaforme: <a
+                        href="http://url2734.distrokid.com/ls/click?upn=u001.a0grtTtFNGObbwv02PitCPUodymsTWKXNsD1pT7nhD0dBHkncfYg2sxA35ruftGv2wuzm1pXuV-2B0zmBrrD11pitLMFdbOKmwYcmeBnNV-2BsTWT-2BobtPLpj-2B-2B01NGrH6F0aYGpFKUQNw56EMbVFyTT8kEdaN5P4teBj7s8is7WS0-2Bm5qSSOy9cBqrg-2BlkBY-2BUP4GgN_fDO-2FEk7YNWdYDbKAvuqwFGTXRpmwkaH93vuUp-2BJQmV-2FRWh6R7UKIZS8pblM1WTapp1mlK9GLzq3DZjvwsiyTUeec-2B9CiD9mLlAQ52eIYoCboi0O-2BVozphtKjjstSmnLRP5VU6tQmbfDR4u2WG9OFhxxCml-2FpuwnIgESdYaJb9jjQWmmobbntvAi3rvx0Lm-2BBYlDZ1pOA7p4Edph4oV9H4g-3D-3D"
+                        target="_blank" rel="noreferrer">pre-save ora</a>.</p>
             </div>
             <div class="news-item">
                 <div class="news-date">15.12.2025</div>
@@ -334,7 +408,8 @@
 
         <section id="bio">
             <h2>Bio</h2>
-            <p>Born under the shadow of the Tuscan forests, Melethor channels the bleakness of black metal with the melancholy of local folklore.</p>
+            <p>Born under the shadow of the Tuscan forests, Melethor channels the bleakness of black metal with the
+                melancholy of local folklore.</p>
             <div class="bio-grid">
                 <div class="card">
                     <strong>Tomhawk</strong><br>
@@ -349,39 +424,66 @@
 
         <section id="music">
             <h2>Music</h2>
-            <div class="music">
-                <img src="images/COPERTINA_definitiva.png" alt="Tales from the Apennines cover" class="cover">
-                <div>
-                    <p style="text-transform: uppercase; letter-spacing: 0.18em;">Long Ancient Road — singolo</p>
-                    <p>Uscita: venerdì 12 dicembre 2025</p>
-                    <p><a href="https://presave.link/long-ancient-road" target="_blank" rel="noreferrer">Pre-save il singolo</a></p>
-                    <div class="line"></div>
-                    <p style="text-transform: uppercase; letter-spacing: 0.18em;">Tales from the Apennines — EP</p>
-                    <p>Uscita completa: 2 gennaio 2026.</p>
-                    <ul class="tracklist">
-                        <li>Beyond Time and Space</li>
-                        <li>A Land to Conquer</li>
-                        <li>Long Ancient Road</li>
-                        <li>Mihi Radices</li>
-                        <li>Spirit of the Lake</li>
-                    </ul>
-                    <div class="streaming">
-                        <a href="https://open.spotify.com" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12 1.5C6.21 1.5 1.5 6.21 1.5 12S6.21 22.5 12 22.5 22.5 17.79 22.5 12 17.79 1.5 12 1.5Zm5.09 14.41a.73.73 0 0 1-1 .24c-2.73-1.67-6.17-2.05-10.2-1.15a.73.73 0 1 1-.32-1.43c4.37-.98 8.16-.53 11.22 1.33.35.21.46.66.25 1.01Zm1.43-3.19a.9.9 0 0 1-1.25.3c-3.12-1.9-7.87-2.45-11.55-1.38a.9.9 0 1 1-.51-1.72c4.17-1.23 9.43-.61 12.95 1.5a.9.9 0 0 1 .36 1.3Zm.12-3.42c-3.66-2.17-9.71-2.37-13.2-1.33a1.06 1.06 0 1 1-.61-2.03c4.08-1.23 10.86-.98 15.11 1.55a1.06 1.06 0 0 1-1.1 1.81Z"/></svg>
-                            Spotify
-                        </a>
-                        <a href="https://music.apple.com" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M18.71 13.44c-.03-2.29 1.87-3.39 1.95-3.44-1.07-1.56-2.73-1.78-3.31-1.8-1.41-.14-2.75.83-3.46.83-.72 0-1.83-.81-3.01-.79-1.55.02-2.98.9-3.77 2.27-1.62 2.8-.41 6.93 1.16 9.2.77 1.1 1.69 2.33 2.89 2.29 1.17-.05 1.61-.74 3.02-.74s1.82.74 3.03.72c1.25-.02 2.04-1.11 2.8-2.21.88-1.29 1.24-2.55 1.26-2.62-.03-.01-2.42-.93-2.46-3.71Zm-2.31-6.76c.65-.79 1.09-1.89.97-2.99-.94.04-2.09.62-2.77 1.4-.61.7-1.14 1.82-.99 2.89 1.05.08 2.14-.53 2.79-1.3Z"/></svg>
-                            Apple Music
-                        </a>
-                        <a href="https://music.youtube.com" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C15.7 4 12 4 12 4h-.1s-3.7 0-6.7.3c-.4 0-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 8.9 2 10.7v1.6c0 1.8.3 3.5.3 3.5s.2 1.4.8 2c.8.8 1.9.8 2.4.9 1.8.2 7.5.3 7.5.3s3.7 0 6.7-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.3-1.7.3-3.5v-1.6c0-1.8-.3-3.5-.3-3.5ZM9.8 14.9V8.9l5.6 3-5.6 3Z"/></svg>
-                            YouTube Music
-                        </a>
-                        <a href="https://melethor.bandcamp.com" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M0 18h11.2V6H0v12zm12.8 0h11.2V6H12.8v12zM6.4 0L0 6h11.2L17.6 0H6.4z"/></svg>
-                            Bandcamp
-                        </a>
+            <div class="music-toggle" aria-label="Seleziona release da mostrare">
+                <button type="button" class="active" data-release="single">Singolo</button>
+                <button type="button" data-release="ep">EP (Tales from the Apennines)</button>
+            </div>
+
+            <div class="release-panel active" data-release-panel="single">
+                <div class="music">
+                    <img src="images/COPERTINA_definitiva.png" alt="Long Ancient Road cover" class="cover">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.18em;">Long Ancient Road �?" singolo</p>
+                        <p>Uscita: venerdǪ 12 dicembre 2025</p>
+                        <p><a href="http://url2734.distrokid.com/ls/click?upn=u001.a0grtTtFNGObbwv02PitCPUodymsTWKXNsD1pT7nhD0dBHkncfYg2sxA35ruftGv2wuzm1pXuV-2B0zmBrrD11pitLMFdbOKmwYcmeBnNV-2BsTWT-2BobtPLpj-2B-2B01NGrH6F0aYGpFKUQNw56EMbVFyTT8kEdaN5P4teBj7s8is7WS0-2Bm5qSSOy9cBqrg-2BlkBY-2BUP4GgN_fDO-2FEk7YNWdYDbKAvuqwFGTXRpmwkaH93vuUp-2BJQmV-2FRWh6R7UKIZS8pblM1WTapp1mlK9GLzq3DZjvwsiyTUeec-2B9CiD9mLlAQ52eIYoCboi0O-2BVozphtKjjstSmnLRP5VU6tQmbfDR4u2WG9OFhxxCml-2FpuwnIgESdYaJb9jjQWmmobbntvAi3rvx0Lm-2BBYlDZ1pOA7p4Edph4oV9H4g-3D-3D"
+                                target="_blank" rel="noreferrer">Pre-save il singolo</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="release-panel" data-release-panel="ep">
+                <div class="music">
+                    <img src="images/COPERTINA_definitiva.png" alt="Tales from the Apennines cover" class="cover">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.18em;">Tales from the Apennines �?" EP
+                        </p>
+                        <p>Uscita completa: 2 gennaio 2026.</p>
+                        <ul class="tracklist">
+                            <li>Beyond Time and Space</li>
+                            <li>A Land to Conquer</li>
+                            <li>Long Ancient Road</li>
+                            <li>Mihi Radices</li>
+                            <li>Spirit of the Lake</li>
+                        </ul>
+                        <div class="streaming">
+                            <a href="https://open.spotify.com" target="_blank" rel="noreferrer">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 1.5C6.21 1.5 1.5 6.21 1.5 12S6.21 22.5 12 22.5 22.5 17.79 22.5 12 17.79 1.5 12 1.5Zm5.09 14.41a.73.73 0 0 1-1 .24c-2.73-1.67-6.17-2.05-10.2-1.15a.73.73 0 1 1-.32-1.43c4.37-.98 8.16-.53 11.22 1.33.35.21.46.66.25 1.01Zm1.43-3.19a.9.9 0 0 1-1.25.3c-3.12-1.9-7.87-2.45-11.55-1.38a.9.9 0 1 1-.51-1.72c4.17-1.23 9.43-.61 12.95 1.5a.9.9 0 0 1 .36 1.3Zm.12-3.42c-3.66-2.17-9.71-2.37-13.2-1.33a1.06 1.06 0 1 1-.61-2.03c4.08-1.23 10.86-.98 15.11 1.55a1.06 1.06 0 0 1-1.1 1.81Z" />
+                                </svg>
+                                Spotify
+                            </a>
+                            <a href="https://music.apple.com" target="_blank" rel="noreferrer">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18.71 13.44c-.03-2.29 1.87-3.39 1.95-3.44-1.07-1.56-2.73-1.78-3.31-1.8-1.41-.14-2.75.83-3.46.83-.72 0-1.83-.81-3.01-.79-1.55.02-2.98.9-3.77 2.27-1.62 2.8-.41 6.93 1.16 9.2.77 1.1 1.69 2.33 2.89 2.29 1.17-.05 1.61-.74 3.02-.74s1.82.74 3.03.72c1.25-.02 2.04-1.11 2.8-2.21.88-1.29 1.24-2.55 1.26-2.62-.03-.01-2.42-.93-2.46-3.71Zm-2.31-6.76c.65-.79 1.09-1.89.97-2.99-.94.04-2.09.62-2.77 1.4-.61.7-1.14 1.82-.99 2.89 1.05.08 2.14-.53 2.79-1.3Z" />
+                                </svg>
+                                Apple Music
+                            </a>
+                            <a href="https://music.youtube.com" target="_blank" rel="noreferrer">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C15.7 4 12 4 12 4h-.1s-3.7 0-6.7.3c-.4 0-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 8.9 2 10.7v1.6c0 1.8.3 3.5.3 3.5s.2 1.4.8 2c.8.8 1.9.8 2.4.9 1.8.2 7.5.3 7.5.3s3.7 0 6.7-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.3-1.7.3-3.5v-1.6c0-1.8-.3-3.5-.3-3.5ZM9.8 14.9V8.9l5.6 3-5.6 3Z" />
+                                </svg>
+                                YouTube Music
+                            </a>
+                            <a href="https://melethor.bandcamp.com" target="_blank" rel="noreferrer">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M0 18h11.2V6H0v12zm12.8 0h11.2V6H12.8v12zM6.4 0L0 6h11.2L17.6 0H6.4z" />
+                                </svg>
+                                Bandcamp
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -395,14 +497,14 @@
                 <details>
                     <summary>A Land to Conquer</summary>
                     <p>They Say they will survive<br>
-                    The wrath of a man unleashed<br>
-                    Despite the cold frost<br>
-                    An evil war began...</p>
+                        The wrath of a man unleashed<br>
+                        Despite the cold frost<br>
+                        An evil war began...</p>
                 </details>
                 <details>
                     <summary>Long Ancient Road</summary>
                     <p>A long, ancient road<br>
-                    towards an old, ruin castle...</p>
+                        towards an old, ruin castle...</p>
                 </details>
                 <details>
                     <summary>Mihi radices</summary>
@@ -411,7 +513,7 @@
                 <details>
                     <summary>Spirit of the Lake</summary>
                     <p>Embrace the storm, holy lake<br>
-                    Thus powerful, is the rain!...</p>
+                        Thus powerful, is the rain!...</p>
                 </details>
             </div>
         </section>
@@ -430,5 +532,22 @@
             © 2025 Melethor
         </footer>
     </main>
+    <script>
+        (() => {
+            const buttons = document.querySelectorAll(".music-toggle button");
+            const panels = document.querySelectorAll(".release-panel");
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const target = button.dataset.release;
+                    buttons.forEach((btn) => btn.classList.toggle("active", btn === button));
+                    panels.forEach((panel) => {
+                        panel.classList.toggle("active", panel.dataset.releasePanel === target);
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
+
 </html>
